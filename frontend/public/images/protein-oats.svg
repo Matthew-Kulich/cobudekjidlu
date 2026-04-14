@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#fff3df"/>
+  <circle cx="400" cy="260" r="165" fill="#f0d5ad"/>
+  <circle cx="400" cy="260" r="130" fill="#f6e6c7"/>
+  <circle cx="322" cy="222" r="34" fill="#f2ca55"/>
+  <circle cx="395" cy="206" r="34" fill="#f2ca55"/>
+  <circle cx="468" cy="234" r="34" fill="#f2ca55"/>
+  <circle cx="358" cy="286" r="20" fill="#73513a"/>
+  <circle cx="430" cy="300" r="20" fill="#73513a"/>
+  <circle cx="492" cy="284" r="20" fill="#73513a"/>
+  <text x="52" y="72" fill="#7b4a1f" font-size="38" font-family="Arial, sans-serif">Protein oats</text>
+</svg>

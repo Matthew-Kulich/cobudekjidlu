@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#f4efff"/>
+  <path d="M290 150h220l-30 210a55 55 0 0 1-55 48h-50a55 55 0 0 1-55-48Z" fill="#ffffff"/>
+  <path d="M332 184h136l-20 126a28 28 0 0 1-28 24h-40a28 28 0 0 1-28-24Z" fill="#f3f0fa"/>
+  <circle cx="360" cy="225" r="18" fill="#c4904e"/>
+  <circle cx="410" cy="234" r="18" fill="#7d4f2d"/>
+  <circle cx="446" cy="214" r="16" fill="#b87be2"/>
+  <circle cx="390" cy="278" r="20" fill="#d6b36a"/>
+  <text x="52" y="72" fill="#6f4aa0" font-size="38" font-family="Arial, sans-serif">Skyr protein dessert</text>
+</svg>

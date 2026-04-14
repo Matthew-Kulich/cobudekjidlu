@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#fff0e8"/>
+  <ellipse cx="400" cy="300" rx="190" ry="90" fill="#f1e0d0"/>
+  <circle cx="360" cy="255" r="72" fill="#e8b46f"/>
+  <circle cx="430" cy="245" r="72" fill="#efbf7e"/>
+  <circle cx="395" cy="315" r="78" fill="#e3a963"/>
+  <circle cx="350" cy="240" r="10" fill="#c18242"/>
+  <circle cx="450" cy="236" r="10" fill="#c18242"/>
+  <circle cx="414" cy="318" r="10" fill="#c18242"/>
+  <circle cx="506" cy="190" r="22" fill="#7e4cb0"/>
+  <circle cx="530" cy="220" r="18" fill="#5e7ed5"/>
+  <circle cx="290" cy="210" r="18" fill="#d95c73"/>
+  <text x="52" y="72" fill="#964c2e" font-size="38" font-family="Arial, sans-serif">Cottage pancakes</text>
+</svg>

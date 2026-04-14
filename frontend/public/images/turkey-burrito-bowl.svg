@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#fff8ea"/>
+  <circle cx="400" cy="260" r="165" fill="#e7ddd0"/>
+  <circle cx="400" cy="260" r="130" fill="#fffefa"/>
+  <rect x="270" y="205" width="92" height="86" rx="20" fill="#8f5b3e"/>
+  <rect x="372" y="205" width="82" height="86" rx="20" fill="#f0e7d4"/>
+  <rect x="468" y="205" width="82" height="86" rx="20" fill="#ebc35d"/>
+  <rect x="320" y="302" width="96" height="60" rx="20" fill="#b94848"/>
+  <rect x="425" y="302" width="98" height="60" rx="20" fill="#76b366"/>
+  <text x="52" y="72" fill="#915826" font-size="38" font-family="Arial, sans-serif">Turkey burrito bowl</text>
+</svg>

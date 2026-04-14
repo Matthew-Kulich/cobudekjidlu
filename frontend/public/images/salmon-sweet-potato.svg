@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#edf5ff"/>
+  <circle cx="400" cy="260" r="165" fill="#dde4ee"/>
+  <circle cx="400" cy="260" r="130" fill="#ffffff"/>
+  <path d="M270 242c40-68 145-78 220-16-20 74-145 103-220 16Z" fill="#f38c6b"/>
+  <rect x="500" y="205" width="54" height="120" rx="24" fill="#e4a24f"/>
+  <rect x="240" y="286" width="48" height="90" rx="22" fill="#82b95a"/>
+  <rect x="290" y="302" width="48" height="74" rx="22" fill="#8ccc61"/>
+  <rect x="340" y="294" width="48" height="82" rx="22" fill="#70aa4d"/>
+  <text x="52" y="72" fill="#3f5f93" font-size="38" font-family="Arial, sans-serif">Salmon and sweet potato</text>
+</svg>

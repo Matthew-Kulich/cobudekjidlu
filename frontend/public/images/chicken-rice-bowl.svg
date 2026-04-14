@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#eef7ec"/>
+  <circle cx="400" cy="260" r="165" fill="#dde5dd"/>
+  <circle cx="400" cy="260" r="130" fill="#ffffff"/>
+  <rect x="280" y="190" width="95" height="95" rx="20" fill="#d99b5b"/>
+  <rect x="390" y="185" width="115" height="105" rx="24" fill="#f3f0e6"/>
+  <rect x="305" y="300" width="80" height="58" rx="18" fill="#86b96d"/>
+  <rect x="402" y="302" width="105" height="55" rx="18" fill="#a7d37c"/>
+  <circle cx="527" cy="233" r="24" fill="#81c38a"/>
+  <circle cx="545" cy="272" r="20" fill="#ffcb6b"/>
+  <text x="52" y="72" fill="#2d5b3e" font-size="38" font-family="Arial, sans-serif">Chicken rice bowl</text>
+</svg>
