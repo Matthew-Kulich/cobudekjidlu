@@ -15,7 +15,7 @@ services:
       - key: DB_URL
         fromDatabase:
           name: cobudekjidlu-db
-          property: connectionString
+          property: jdbcConnectionString
       - key: DB_USERNAME
         fromDatabase:
           name: cobudekjidlu-db
