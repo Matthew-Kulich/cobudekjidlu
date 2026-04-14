@@ -63,6 +63,20 @@ npm run dev
 
 Frontend pobezi na `http://localhost:5173`.
 
+## GitHub Pages
+
+Frontend je pripraveny na automaticky deploy na GitHub Pages pres GitHub Actions workflow v [.github/workflows/deploy-pages.yml](/C:/Users/matej/projects/cobudekjidlu/.github/workflows/deploy-pages.yml).
+
+Pred prvnim nasazenim na GitHubu udelej:
+
+1. V repozitari otevri `Settings > Pages`.
+2. V `Source` vyber `GitHub Actions`.
+3. V `Settings > Secrets and variables > Actions > Variables` pridej repozitarovou promennou `VITE_API_URL`.
+
+`VITE_API_URL` ma ukazovat na bezici backend API, napriklad `https://tvoje-api-domena.cz/api`.
+
+Po pushi do `main` se nasadi obsah `frontend/dist` na adresu `https://matthew-kulich.github.io/cobudekjidlu/`.
+
 ## Poznamka k demo datum
 
 - ceny v seedech jsou snapshot z internetu k `12. 4. 2026`
