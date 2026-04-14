@@ -79,7 +79,7 @@ Po pushi do `main` se nasadi obsah `frontend/dist` na adresu `https://matthew-ku
 
 ## Nasazeni backendu
 
-GitHub Pages umi hostovat jen staticky frontend. Backend je pripraveny na nasazeni jako samostatna Java aplikace, nejjednoduseji pres Render blueprint v [render.yaml](/C:/Users/matej/projects/cobudekjidlu/render.yaml).
+GitHub Pages umi hostovat jen staticky frontend. Backend je pripraveny na nasazeni jako samostatna Spring Boot aplikace pres Render blueprint v [render.yaml](/C:/Users/matej/projects/cobudekjidlu/render.yaml), ktery pouziva Docker build z [backend/Dockerfile](/C:/Users/matej/projects/cobudekjidlu/backend/Dockerfile).
 
 Postup:
 
