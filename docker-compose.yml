@@ -1,11 +1,11 @@
 services:
   postgres:
     image: postgres:17
-    container_name: cojist-postgres
+    container_name: cobudekjidlu-postgres
     environment:
-      POSTGRES_DB: cojist
-      POSTGRES_USER: cojist
-      POSTGRES_PASSWORD: cojist
+      POSTGRES_DB: cobudekjidlu
+      POSTGRES_USER: cobudekjidlu
+      POSTGRES_PASSWORD: cobudekjidlu
     ports:
       - "5432:5432"
     volumes:
@@ -13,3 +13,4 @@ services:
 
 volumes:
   postgres-data:
+

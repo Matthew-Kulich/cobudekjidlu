@@ -1,4 +1,4 @@
-# CoJist
+# CoBudekJidlu
 
 Pocatecni fullstack template pro webovou aplikaci na ukladani receptu, jejich historii a chytre doporucovani podle nalady, kuchyne a narocnosti.
 
@@ -75,3 +75,4 @@ Frontend pobezi na `http://localhost:5173`.
 2. Pridat uzivatele a osobni historii konzumace.
 3. Presunout seed a schema migrace do Flyway.
 4. Pridat periodicky import cen z vybranych obchodnich webu.
+
