@@ -77,6 +77,25 @@ Pred prvnim nasazenim na GitHubu udelej:
 
 Po pushi do `main` se nasadi obsah `frontend/dist` na adresu `https://matthew-kulich.github.io/cobudekjidlu/`.
 
+## Nasazeni backendu
+
+GitHub Pages umi hostovat jen staticky frontend. Backend je pripraveny na nasazeni jako samostatna Java aplikace, nejjednoduseji pres Render blueprint v [render.yaml](/C:/Users/matej/projects/cobudekjidlu/render.yaml).
+
+Postup:
+
+1. Pushni zmeny do GitHubu.
+2. Na Renderu zaloz `New + > Blueprint`.
+3. Vyber repozitar `Matthew-Kulich/cobudekjidlu`.
+4. Render nacte `render.yaml` a vytvori:
+   - PostgreSQL databazi `cobudekjidlu-db`
+   - web service `cobudekjidlu-backend`
+5. Po deployi zkopiruj URL backendu, napriklad `https://cobudekjidlu-backend.onrender.com`.
+6. Na GitHubu nastav `Settings > Secrets and variables > Actions > Variables`:
+   - `VITE_API_URL = https://cobudekjidlu-backend.onrender.com/api`
+7. Udelej novy push do `main`, aby se frontend na GitHub Pages znovu nasadil s novou API adresou.
+
+Pro CORS musi v Render service zustat promenna `FRONTEND_URL`. Pokud budes pouzivat defaultni GitHub Pages domenu, nech ji na `https://matthew-kulich.github.io`.
+
 ## Poznamka k demo datum
 
 - ceny v seedech jsou snapshot z internetu k `12. 4. 2026`
