@@ -20,7 +20,7 @@ export function AuthPanel({
           <strong>{currentUser.displayName}</strong>
           <span>{currentUser.email}</span>
           <button className="ghost-button" type="button" onClick={onLogout}>
-            Odhlasit se
+            Odhlásit se
           </button>
         </div>
       ) : (
@@ -31,7 +31,7 @@ export function AuthPanel({
               type="button"
               onClick={() => onModeChange("login")}
             >
-              Prihlaseni
+              Přihlášení
             </button>
             <button
               className={authMode === "register" ? "chip active" : "chip"}
@@ -45,7 +45,7 @@ export function AuthPanel({
           <form className="recipe-form" onSubmit={onSubmit}>
             {authMode === "register" ? (
               <label>
-                Jmeno
+                Jméno
                 <input
                   value={authForm.displayName}
                   onChange={(event) => onAuthFormChange("displayName", event.target.value)}
@@ -75,11 +75,11 @@ export function AuthPanel({
             </label>
 
             <button className="primary-button" type="submit">
-              {authMode === "login" ? "Prihlasit se" : "Vytvorit ucet"}
+              {authMode === "login" ? "Přihlásit se" : "Vytvořit účet"}
             </button>
           </form>
 
-          <p className="demo-note">Demo ucet: matej@cobudekjidlu.local / demo123</p>
+          <p className="demo-note">Demo účet: matej@cobudekjidlu.local / demo123</p>
         </>
       )}
     </div>

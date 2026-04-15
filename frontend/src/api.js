@@ -2,7 +2,7 @@ const API_URL = import.meta.env.VITE_API_URL ?? "/api";
 
 async function parseResponse(response) {
   if (!response.ok) {
-    let message = `API request failed with status ${response.status}`;
+    let message = `Požadavek na API selhal se stavem ${response.status}`;
 
     try {
       const payload = await response.json();
@@ -107,6 +107,13 @@ export async function createRecipe(recipe) {
   });
 }
 
+export async function updateRecipe(recipeId, recipe) {
+  return apiFetch(`/recipes/${recipeId}`, {
+    method: "PUT",
+    body: JSON.stringify(recipe)
+  });
+}
+
 export async function favoriteRecipe(recipeId) {
   return apiFetch(`/recipes/${recipeId}/favorite`, {
     method: "POST",
@@ -118,5 +125,30 @@ export async function unfavoriteRecipe(recipeId) {
   return apiFetch(`/recipes/${recipeId}/favorite`, {
     method: "DELETE",
     body: "{}"
+  });
+}
+
+export async function fetchLibrary() {
+  return apiFetch("/recipes/library", { headers: {} });
+}
+
+export async function addRecipeToLibrary(recipeId) {
+  return apiFetch(`/recipes/${recipeId}/library`, {
+    method: "POST",
+    body: "{}"
+  });
+}
+
+export async function removeRecipeFromLibrary(recipeId) {
+  return apiFetch(`/recipes/${recipeId}/library`, {
+    method: "DELETE",
+    body: "{}"
+  });
+}
+
+export async function markRecipeConsumed(recipeId, consumedOn) {
+  return apiFetch(`/recipes/${recipeId}/consume`, {
+    method: "POST",
+    body: JSON.stringify({ consumedOn })
   });
 }

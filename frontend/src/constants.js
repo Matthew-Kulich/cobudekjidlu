@@ -1,11 +1,11 @@
 export const moods = [
-  { value: "", label: "Kazda nalada" },
+  { value: "", label: "Každá nálada" },
   { value: "COMFORT", label: "Comfort" },
-  { value: "QUICK", label: "Rychle hotove" },
+  { value: "QUICK", label: "Rychle hotové" },
   { value: "HEALTHY", label: "Fitness" },
-  { value: "CELEBRATION", label: "Neco lepsiho" },
+  { value: "CELEBRATION", label: "Něco lepšího" },
   { value: "ADVENTUROUS", label: "Chci zkusit novinku" },
-  { value: "LAZY_DAY", label: "Liny den" }
+  { value: "LAZY_DAY", label: "Líný den" }
 ];
 
 export const recipeTypes = ["BREAKFAST", "LUNCH", "DINNER", "DESSERT", "SNACK", "DRINK"];
@@ -13,10 +13,10 @@ export const cuisineTypes = ["CZECH", "ITALIAN", "INDIAN", "MEDITERRANEAN", "INT
 export const difficultyLevels = ["EASY", "MEDIUM", "HARD"];
 export const visibilityOptions = ["PUBLIC", "PRIVATE"];
 export const scopeOptions = [
-  { value: "ALL", label: "Vsechny recepty" },
-  { value: "FAVORITES", label: "Oblibene" },
-  { value: "MINE", label: "Moje recepty" },
-  { value: "PRIVATE", label: "Moje soukrome" }
+  { value: "ALL", label: "Všechny recepty" },
+  { value: "FAVORITES", label: "Oblíbené" },
+  { value: "MINE", label: "Moje a uložené" },
+  { value: "PRIVATE", label: "Moje soukromé" }
 ];
 
 export function createEmptyIngredient() {

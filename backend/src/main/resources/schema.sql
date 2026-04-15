@@ -5,6 +5,12 @@ CREATE TABLE IF NOT EXISTS app_users (
     password_hash VARCHAR(255) NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS user_favorite_recipes (
+    user_id BIGINT NOT NULL,
+    recipe_id BIGINT NOT NULL,
+    PRIMARY KEY (user_id, recipe_id)
+);
+
 CREATE TABLE IF NOT EXISTS recipes (
     id BIGSERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -15,6 +21,15 @@ CREATE TABLE IF NOT EXISTS recipes (
     visibility VARCHAR(255) NOT NULL DEFAULT 'PUBLIC',
     prep_minutes INTEGER NOT NULL DEFAULT 0,
     last_cooked_at TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS user_recipe_entries (
+    id BIGSERIAL PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    recipe_id BIGINT NOT NULL,
+    added_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    last_cooked_at TIMESTAMP,
+    CONSTRAINT uq_user_recipe_entry UNIQUE (user_id, recipe_id)
 );
 
 ALTER TABLE recipes ADD COLUMN IF NOT EXISTS cuisine VARCHAR(255);

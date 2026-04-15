@@ -1,6 +1,7 @@
 package cz.matej.cobudekjidlu.recipe;
 
 import cz.matej.cobudekjidlu.recipe.dto.CreateRecipeRequest;
+import cz.matej.cobudekjidlu.recipe.dto.RecipeConsumptionRequest;
 import cz.matej.cobudekjidlu.recipe.dto.RecipeResponse;
 import cz.matej.cobudekjidlu.recipe.model.CuisineType;
 import cz.matej.cobudekjidlu.recipe.model.DifficultyLevel;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -57,6 +59,11 @@ public class RecipeController {
         return recipeService.createRecipe(request, authService.requireCurrentUser(session));
     }
 
+    @PutMapping("/{id}")
+    public RecipeResponse updateRecipe(@PathVariable Long id, @Valid @RequestBody CreateRecipeRequest request, HttpSession session) {
+        return recipeService.updateRecipe(id, request, authService.requireCurrentUser(session));
+    }
+
     @GetMapping("/discover")
     public List<RecipeResponse> discoverRecipes(
             @RequestParam(required = false) MoodTag mood,
@@ -77,5 +84,28 @@ public class RecipeController {
     public RecipeResponse unfavoriteRecipe(@PathVariable Long id, HttpSession session) {
         return recipeService.unfavoriteRecipe(id, authService.requireCurrentUser(session));
     }
-}
 
+    @GetMapping("/library")
+    public List<RecipeResponse> getLibrary(HttpSession session) {
+        return recipeService.getLibrary(authService.requireCurrentUser(session));
+    }
+
+    @PostMapping("/{id}/library")
+    public RecipeResponse addRecipeToLibrary(@PathVariable Long id, HttpSession session) {
+        return recipeService.addRecipeToLibrary(id, authService.requireCurrentUser(session));
+    }
+
+    @DeleteMapping("/{id}/library")
+    public RecipeResponse removeRecipeFromLibrary(@PathVariable Long id, HttpSession session) {
+        return recipeService.removeRecipeFromLibrary(id, authService.requireCurrentUser(session));
+    }
+
+    @PostMapping("/{id}/consume")
+    public RecipeResponse markRecipeConsumed(
+            @PathVariable Long id,
+            @Valid @RequestBody RecipeConsumptionRequest request,
+            HttpSession session
+    ) {
+        return recipeService.markRecipeConsumed(id, request, authService.requireCurrentUser(session));
+    }
+}

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Placeholder receptu</title>
+  <desc id="desc">Jednoduchy ilustrovany placeholder obrazek jidla.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff4df" />
+      <stop offset="100%" stop-color="#e6f0e7" />
+    </linearGradient>
+    <linearGradient id="plate" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#f2e8d6" />
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)" rx="48" />
+  <circle cx="800" cy="470" r="250" fill="url(#plate)" />
+  <circle cx="800" cy="470" r="190" fill="#f8d2a6" />
+  <ellipse cx="720" cy="430" rx="72" ry="42" fill="#d36422" />
+  <ellipse cx="880" cy="500" rx="80" ry="46" fill="#7a9e52" />
+  <ellipse cx="830" cy="390" rx="62" ry="36" fill="#f3ede0" />
+  <ellipse cx="745" cy="530" rx="88" ry="50" fill="#dbb178" />
+  <path d="M645 270c62-62 136-94 221-94 100 0 175 42 248 120" fill="none" stroke="#8f4618" stroke-linecap="round" stroke-width="24" opacity=".16"/>
+  <text x="800" y="760" text-anchor="middle" fill="#8f4618" font-family="Space Grotesk, Segoe UI, sans-serif" font-size="72" font-weight="700">
+    Recept
+  </text>
+</svg>

@@ -16,6 +16,10 @@ body {
   min-height: 100vh;
 }
 
+#root {
+  min-height: 100vh;
+}
+
 button,
 input,
 select,
@@ -25,6 +29,7 @@ textarea {
 
 img {
   display: block;
+  max-width: 100%;
 }
 
 a {
@@ -99,7 +104,10 @@ a {
 .tag-row,
 .chip-row,
 .card-actions,
-.auth-switch {
+.auth-switch,
+.view-switch,
+.detail-action-group,
+.consume-box {
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
@@ -167,6 +175,21 @@ a {
   margin-bottom: 1rem;
 }
 
+.filter-summary-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.view-switch {
+  justify-content: flex-start;
+}
+
+.section-state {
+  margin: 0;
+}
+
 .filter-grid,
 .suggestion-grid,
 .table-grid,
@@ -188,11 +211,12 @@ a {
 }
 
 .table-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .recipe-card {
-  padding: 1rem;
+  padding: 0.85rem;
+  min-width: 0;
 }
 
 .compact-card,
@@ -207,10 +231,69 @@ a {
 
 .recipe-image {
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 5;
   object-fit: cover;
-  border-radius: 18px;
+  border-radius: 16px;
   background: rgba(25, 33, 38, 0.05);
+  content-visibility: auto;
+}
+
+.recipe-image-placeholder {
+  display: grid;
+  place-items: end start;
+  padding: 0.75rem;
+  background:
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.55), transparent 28%),
+    linear-gradient(135deg, rgba(211, 100, 34, 0.24), rgba(122, 158, 82, 0.24));
+}
+
+.recipe-image-placeholder span {
+  display: inline-flex;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(255, 250, 246, 0.92);
+  color: #8f4618;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.compact-recipe-card h3 {
+  font-size: 1.05rem;
+  line-height: 1.25;
+}
+
+.compact-recipe-card p {
+  margin: 0;
+}
+
+.compact-recipe-card .recipe-meta,
+.compact-recipe-card .nutrition-row,
+.compact-recipe-card .card-actions {
+  gap: 0.5rem;
+}
+
+.compact-recipe-card .card-actions button {
+  padding: 0.72rem 0.9rem;
+  min-height: 40px;
+}
+
+.compact-recipe-card .metrics-grid div {
+  padding: 0.65rem;
+  border-radius: 14px;
+}
+
+.compact-recipe-card .metrics-grid strong {
+  font-size: 0.95rem;
+}
+
+.compact-recipe-card .metrics-grid span,
+.compact-recipe-card .recipe-meta span,
+.compact-recipe-card .nutrition-row span {
+  font-size: 0.78rem;
+}
+
+.mobile-filter-toggle {
+  display: none;
 }
 
 .recipe-meta span,
@@ -289,6 +372,7 @@ a {
   padding: 0.85rem 1.1rem;
   border-radius: 16px;
   cursor: pointer;
+  min-height: 48px;
 }
 
 .primary-button {
@@ -312,6 +396,14 @@ a {
 
 .checkbox-row input {
   width: auto;
+}
+
+.consume-box {
+  align-items: end;
+}
+
+.consume-box label {
+  min-width: 180px;
 }
 
 .ingredient-section {
@@ -370,6 +462,7 @@ a {
   object-fit: cover;
   border-radius: 20px;
   margin: 0.5rem 0 1rem;
+  background: rgba(25, 33, 38, 0.05);
 }
 
 .detail-header {
@@ -405,10 +498,25 @@ a {
 
 @media (max-width: 1120px) {
   .hero,
-  .content-grid,
-  .filter-grid,
-  .table-grid {
+  .content-grid {
     grid-template-columns: 1fr;
+  }
+
+  .table-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .filter-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .stat-card {
+    min-width: 0;
   }
 }
 
@@ -423,14 +531,86 @@ a {
     padding: 1.05rem;
   }
 
+  .hero h1,
+  .panel h2 {
+    font-size: clamp(1.4rem, 5vw, 1.9rem);
+  }
+
+  .hero-copy {
+    font-size: 0.98rem;
+  }
+
   .form-row,
   .panel-header,
   .detail-header {
     flex-direction: column;
   }
 
+  .stats-row,
+  .filter-grid,
   .metrics-grid {
     grid-template-columns: 1fr;
+  }
+
+  .mobile-filter-toggle {
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .filter-grid {
+    display: none;
+  }
+
+  .filter-grid.filter-grid-open {
+    display: grid;
+  }
+
+  .recipe-meta,
+  .nutrition-row,
+  .card-actions,
+  .auth-switch,
+  .chip-row,
+  .view-switch,
+  .detail-action-group,
+  .consume-box {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .recipe-meta span,
+  .nutrition-row span,
+  .card-actions > *,
+  .auth-switch > *,
+  .chip-row > *,
+  .view-switch > *,
+  .detail-action-group > *,
+  .consume-box > * {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .recipe-card p,
+  .detail-panel p,
+  .detail-panel li,
+  .detail-panel small {
+    overflow-wrap: anywhere;
+  }
+
+  .detail-overlay {
+    padding: 0;
+  }
+
+  .detail-modal {
+    width: 100%;
+    max-height: 100vh;
+    min-height: 100vh;
+    border-radius: 0;
+    padding: 1rem;
+  }
+
+  .detail-image {
+    aspect-ratio: 4 / 3;
   }
 
   .detail-grid {

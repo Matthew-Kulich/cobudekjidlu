@@ -23,11 +23,14 @@ public record RecipeResponse(
         DifficultyLevel difficulty,
         RecipeVisibility visibility,
         boolean favorite,
+        boolean inLibrary,
+        boolean editable,
         Set<MoodTag> moodTags,
         Integer prepMinutes,
         Integer cookMinutes,
         Integer totalMinutes,
         LocalDateTime lastCookedAt,
+        LocalDateTime personalLastCookedAt,
         long hoursSinceLastCooked,
         Integer calories,
         BigDecimal proteinGrams,
@@ -42,4 +45,3 @@ public record RecipeResponse(
         List<String> procedureSteps
 ) {
 }
-

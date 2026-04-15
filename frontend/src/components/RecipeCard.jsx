@@ -1,9 +1,22 @@
+import { memo } from "react";
 import { formatEnum, formatHoursSince, formatLastCooked } from "../utils";
 
-export function RecipeCard({ recipe, currentUser, onDetail, onFavorite }) {
+function RecipeCardComponent({
+  recipe,
+  currentUser,
+  onDetail,
+  onFavorite,
+  onLibraryToggle,
+  onConsumeToday,
+  onEdit
+}) {
+  const lastSeenLabel = recipe.personalLastCookedAt ? formatLastCooked({ lastCookedAt: recipe.personalLastCookedAt }) : "Zatím bez záznamu";
+
   return (
-    <article className="recipe-card detail-card">
-      <img className="recipe-image" src={recipe.imageUrl} alt={recipe.name} />
+    <article className="recipe-card detail-card compact-recipe-card">
+      <div className="recipe-image recipe-image-placeholder" aria-hidden="true">
+        <span>{formatEnum(recipe.type)}</span>
+      </div>
       <div className="recipe-meta">
         <span>{formatEnum(recipe.type)}</span>
         <span>{formatEnum(recipe.cuisine)}</span>
@@ -23,12 +36,12 @@ export function RecipeCard({ recipe, currentUser, onDetail, onFavorite }) {
           <span>na porci</span>
         </div>
         <div>
-          <strong>{Number(recipe.estimatedPortionPriceCzk || 0).toFixed(0)} Kc</strong>
+          <strong>{Number(recipe.estimatedPortionPriceCzk || 0).toFixed(0)} Kč</strong>
           <span>odhad porce</span>
         </div>
         <div>
-          <strong>{formatLastCooked(recipe)}</strong>
-          <span>naposledy</span>
+          <strong>{lastSeenLabel}</strong>
+          <span>naposledy jsi měl</span>
         </div>
       </div>
 
@@ -38,18 +51,35 @@ export function RecipeCard({ recipe, currentUser, onDetail, onFavorite }) {
         <span>T {recipe.fatGrams} g</span>
       </div>
 
-      <p className="muted">Tohle jidlo jsi mel {formatHoursSince(recipe.hoursSinceLastCooked)}.</p>
+      <p className="muted">
+        {recipe.personalLastCookedAt ? `Tohle jídlo jsi měl ${formatHoursSince(recipe.hoursSinceLastCooked)}.` : "Zapiš si, kdy jsi ho měl naposledy."}
+      </p>
 
       <div className="card-actions">
         <button className="ghost-button" type="button" onClick={() => onDetail(recipe.id)}>
-          Detail jidla
+          Detail jídla
         </button>
         {currentUser ? (
-          <button className="ghost-button" type="button" onClick={() => onFavorite(recipe)}>
-            {recipe.favorite ? "V oblibenych" : "Pridat do oblibenych"}
-          </button>
+          <>
+            <button className="ghost-button" type="button" onClick={() => onFavorite(recipe)}>
+              {recipe.favorite ? "V oblíbených" : "Přidat do oblíbených"}
+            </button>
+            <button className="ghost-button" type="button" onClick={() => onLibraryToggle(recipe)}>
+              {recipe.inLibrary ? "V mém seznamu" : "Přidat do mého seznamu"}
+            </button>
+            <button className="ghost-button" type="button" onClick={() => onConsumeToday(recipe)}>
+              Měl jsem dneska
+            </button>
+            {recipe.editable ? (
+              <button className="ghost-button" type="button" onClick={() => onEdit(recipe)}>
+                Upravit recept
+              </button>
+            ) : null}
+          </>
         ) : null}
       </div>
     </article>
   );
 }
+
+export const RecipeCard = memo(RecipeCardComponent);

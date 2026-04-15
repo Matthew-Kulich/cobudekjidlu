@@ -10,44 +10,46 @@ import { formatEnum } from "../utils";
 export function RecipeForm({
   currentUser,
   formData,
+  isEditing,
   onFieldChange,
   onToggleMood,
   onIngredientChange,
   onIngredientAdd,
   onIngredientRemove,
-  onSubmit
+  onSubmit,
+  onCancelEdit
 }) {
   if (!currentUser) {
     return (
       <article className="panel form-panel">
         <div className="panel-header">
           <div>
-            <p className="eyebrow">Novy recept</p>
-            <h2>Vlastni recept vytvori jen prihlaseny uzivatel</h2>
+            <p className="eyebrow">Nový recept</p>
+            <h2>Vlastní recept vytvoří jen přihlášený uživatel</h2>
           </div>
         </div>
-        <p className="muted">Pro vytvareni receptu se prihlas. Soukrome recepty pak uvidis jen ty.</p>
+        <p className="muted">Pro vytváření receptů se přihlas. Soukromé recepty pak uvidíš jen ty.</p>
       </article>
     );
   }
 
   return (
     <article className="panel form-panel">
-      <div className="panel-header">
-        <div>
-          <p className="eyebrow">Novy recept</p>
-          <h2>Pridat vlastni jidlo i s postupem, surovinami a cenou</h2>
+        <div className="panel-header">
+          <div>
+            <p className="eyebrow">Nový recept</p>
+            <h2>{isEditing ? "Upravit vlastní recept" : "Přidat vlastní jídlo i s postupem, surovinami a cenou"}</h2>
+          </div>
         </div>
-      </div>
 
       <form className="recipe-form" onSubmit={onSubmit}>
         <label>
-          Nazev
+          Název
           <input value={formData.name} onChange={(event) => onFieldChange("name", event.target.value)} required />
         </label>
 
         <label>
-          URL obrazku
+          URL obrázku
           <input value={formData.imageUrl} onChange={(event) => onFieldChange("imageUrl", event.target.value)} required />
         </label>
 
@@ -65,7 +67,7 @@ export function RecipeForm({
           </label>
 
           <label>
-            Kuchyne
+            Kuchyně
             <select value={formData.cuisine} onChange={(event) => onFieldChange("cuisine", event.target.value)}>
               {cuisineTypes.map((cuisine) => <option key={cuisine} value={cuisine}>{formatEnum(cuisine)}</option>)}
             </select>
@@ -81,19 +83,19 @@ export function RecipeForm({
 
         <div className="form-row">
           <label>
-            Narocnost
+            Náročnost
             <select value={formData.difficulty} onChange={(event) => onFieldChange("difficulty", event.target.value)}>
               {difficultyLevels.map((difficulty) => <option key={difficulty} value={difficulty}>{formatEnum(difficulty)}</option>)}
             </select>
           </label>
 
           <label>
-            Priprava
+            Příprava
             <input type="number" min="0" value={formData.prepMinutes} onChange={(event) => onFieldChange("prepMinutes", event.target.value)} />
           </label>
 
           <label>
-            Vareni
+            Vaření
             <input type="number" min="0" value={formData.cookMinutes} onChange={(event) => onFieldChange("cookMinutes", event.target.value)} />
           </label>
         </div>
@@ -105,7 +107,7 @@ export function RecipeForm({
           </label>
 
           <label>
-            Bilkoviny
+            Bílkoviny
             <input type="number" step="0.1" value={formData.proteinGrams} onChange={(event) => onFieldChange("proteinGrams", event.target.value)} />
           </label>
 
@@ -148,7 +150,7 @@ export function RecipeForm({
         </label>
 
         <fieldset>
-          <legend>Nalady</legend>
+          <legend>Nálady</legend>
           <div className="chip-row">
             {moods.filter((mood) => mood.value).map((mood) => (
               <button
@@ -164,12 +166,12 @@ export function RecipeForm({
         </fieldset>
 
         <label>
-          Postup pripravy
+          Postup přípravy
           <textarea
             rows="5"
             value={formData.procedureStepsText}
             onChange={(event) => onFieldChange("procedureStepsText", event.target.value)}
-            placeholder="Kazdy krok napis na novy radek"
+            placeholder="Každý krok napiš na nový řádek"
           />
         </label>
 
@@ -180,12 +182,12 @@ export function RecipeForm({
               <div key={`${ingredient.name}-${index}`} className="ingredient-card">
                 <div className="form-row">
                   <label>
-                    Nazev
+                    Název
                     <input value={ingredient.name} onChange={(event) => onIngredientChange(index, { name: event.target.value })} />
                   </label>
 
                   <label>
-                    Mnozstvi
+                    Množství
                     <input value={ingredient.amount} onChange={(event) => onIngredientChange(index, { amount: event.target.value })} />
                   </label>
                 </div>
@@ -209,7 +211,7 @@ export function RecipeForm({
 
                 <label className="checkbox-row">
                   <input type="checkbox" checked={ingredient.optionalIngredient} onChange={(event) => onIngredientChange(index, { optionalIngredient: event.target.checked })} />
-                  Volitelna surovina
+                  Volitelná surovina
                 </label>
 
                 <button type="button" className="ghost-button" onClick={() => onIngredientRemove(index)}>
@@ -220,13 +222,20 @@ export function RecipeForm({
           </div>
 
           <button type="button" className="ghost-button" onClick={onIngredientAdd}>
-            Pridat dalsi surovinu
+            Přidat další surovinu
           </button>
         </fieldset>
 
-        <button className="primary-button" type="submit">
-          Ulozit recept
-        </button>
+        <div className="card-actions">
+          <button className="primary-button" type="submit">
+            {isEditing ? "Uložit změny" : "Uložit recept"}
+          </button>
+          {isEditing ? (
+            <button className="ghost-button" type="button" onClick={onCancelEdit}>
+              Zrušit úpravy
+            </button>
+          ) : null}
+        </div>
       </form>
     </article>
   );
